@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0926755fe50151c033b7",
+  "position": {
+    "x": 167.27272727272725,
+    "y": 9.09090909090909,
+    "z": 2000,
+    "height": 121.36800855005345,
+    "width": 647.37340322662737,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\t"
+                  },
+                  {
+                    "value": "PORTAL",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Light",
+                      "fontSize": "20pt",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\t",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Light",
+                      "color": "#ffffff"
+                    }
+                  },
+                  {
+                    "value": "BUSINESS INTELLIGENCE",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Light",
+                      "fontSize": "20pt",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Header PROINTER'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dados de Pessoal | Servidores'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

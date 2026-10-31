@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "a0a1e43acfd4263c1292",
+  "position": {
+    "x": 182.72727272727272,
+    "y": 302.72727272727269,
+    "z": 32000,
+    "height": 130.90909090909091,
+    "width": 322.72727272727269,
+    "tabOrder": 30000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Ferramenta de acompanhamento do PDI IFBA 2020-2024, reunindo indicadores qualitativos e quantitativos das áreas de ensino, pessoal e infraestrutura.",
+                    "textStyle": {
+                      "fontFamily": "Arial, Helvetica, sans-serif",
+                      "color": "#172938"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

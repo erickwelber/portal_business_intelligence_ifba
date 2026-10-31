@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "193a5b63a19d58434b1e",
+  "position": {
+    "x": 942.72727272727263,
+    "y": 74.545454545454533,
+    "z": 54000,
+    "height": 90,
+    "width": 300,
+    "tabOrder": 53000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "A divisão por setores indica a área responsável pela criação do painel, e não uma exclusividade de uso. Os indicadores são integrados e podem atender a demandas analíticas de múltiplos setores institucionais.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Light",
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,76 @@
+table IFBA
+	lineageTag: 49f7d1df-1586-4008-aaea-cffdfa709f2c
+
+	column e-mail
+		dataType: string
+		lineageTag: 40ef364e-dee6-40c9-abb2-30ccb6df3897
+		summarizeBy: none
+		sourceColumn: e-mail
+
+		annotation SummarizationSetBy = Automatic
+
+	column setor
+		dataType: string
+		lineageTag: 50fbe49e-bf20-4959-82eb-d2ad4a31553e
+		summarizeBy: none
+		sourceColumn: setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column titulo_painel
+		dataType: string
+		lineageTag: cf28d2ba-02d7-4893-b740-40ca8b8944ec
+		summarizeBy: none
+		sourceColumn: titulo_painel
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao
+		dataType: string
+		lineageTag: 53a3ef7b-38c5-48a2-b045-6ea7a13cb4d5
+		summarizeBy: none
+		sourceColumn: descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column link
+		dataType: string
+		lineageTag: 702ded3a-d96a-4a13-bad2-4d6c879f52ca
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: link
+
+		annotation SummarizationSetBy = Automatic
+
+	column iframe
+		dataType: string
+		lineageTag: 13974d75-7548-4a64-a480-45f6944e0c06
+		summarizeBy: none
+		sourceColumn: iframe
+
+		annotation SummarizationSetBy = Automatic
+
+	column rota
+		dataType: string
+		lineageTag: 45be6f02-7a14-4c26-a5d3-ec3ccfd88e1c
+		summarizeBy: none
+		sourceColumn: rota
+
+		annotation SummarizationSetBy = Automatic
+
+	partition IFBA = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\erick\Documents\PRODIN\portal_business_intelligence_ifba\data\processed\Portal_Dados_IFBA.xlsx"), null, true),
+				    IFBA_Sheet = Fonte{[Item="IFBA",Kind="Sheet"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(IFBA_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}}),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"e-mail", type text}, {"setor", type text}, {"titulo_painel", type text}, {"descricao", type text}, {"link", type text}, {"iframe", type text}, {"rota", type text}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

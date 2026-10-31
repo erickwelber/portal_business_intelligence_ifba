@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1c3272943236cc136041",
+  "position": {
+    "x": 182.72727272727272,
+    "y": 571.81818181818176,
+    "z": 51000,
+    "height": 130.90909090909091,
+    "width": 322.72727272727269,
+    "tabOrder": 50000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Tem como finalidade consolidar informações estratégicas sobre a atuação e o alcance do IFBA, oferecendo uma visão gerencial da instituição por meio de indicadores estatísticos.",
+                    "textStyle": {
+                      "fontFamily": "Arial, Helvetica, sans-serif",
+                      "color": "#172938"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

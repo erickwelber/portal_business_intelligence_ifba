@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "731f85991db5f72796bf",
+  "position": {
+    "x": 881.81818181818176,
+    "y": 571.81818181818176,
+    "z": 39000,
+    "height": 130.90909090909091,
+    "width": 350,
+    "tabOrder": 40000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Apresenta informações sobre o andamento das obras em execução no IFBA, fiscalizadas pela Diretoria de Infraestrutura da Pró-Reitoria de Desenvolvimento Institucional - PRODIN",
+                    "textStyle": {
+                      "fontFamily": "Arial, Helvetica, sans-serif",
+                      "color": "#172938"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

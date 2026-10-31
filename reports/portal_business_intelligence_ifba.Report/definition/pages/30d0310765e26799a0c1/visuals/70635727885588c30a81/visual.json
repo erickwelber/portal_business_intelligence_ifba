@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "70635727885588c30a81",
+  "position": {
+    "x": 43.990024937655861,
+    "y": 302.54364089775561,
+    "z": 24000,
+    "height": 131.07231920199501,
+    "width": 350.12468827930172,
+    "tabOrder": 24000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Contém os dados mensais sobre a ocupação do Banco de Professor Equivalente do IFBA, contendo as principais informações sobre a força de trabalho docente em cada campus da instituição.",
+                    "textStyle": {
+                      "fontFamily": "Arial, Helvetica, sans-serif",
+                      "color": "#172938"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

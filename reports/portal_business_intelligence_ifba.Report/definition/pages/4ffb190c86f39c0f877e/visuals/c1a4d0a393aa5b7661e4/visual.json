@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "c1a4d0a393aa5b7661e4",
+  "position": {
+    "x": 550.90909090909088,
+    "y": 571.81818181818176,
+    "z": 53000,
+    "height": 130.90909090909091,
+    "width": 322.72727272727269,
+    "tabOrder": 52000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Articular as relações dos Centros de Referências do IFBA com as comunidades dos municípios de Camacã, Campo Formoso, Jaguaquara, Itatim, Salinas das Margaridas, Campo Formoso...",
+                    "textStyle": {
+                      "fontFamily": "Arial, Helvetica, sans-serif",
+                      "color": "#172938"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

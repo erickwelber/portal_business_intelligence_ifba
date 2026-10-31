@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "portal_business_intelligence_ifba"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a23cbab8-c721-4ed1-877f-1162d6adec27"
+  }
+}

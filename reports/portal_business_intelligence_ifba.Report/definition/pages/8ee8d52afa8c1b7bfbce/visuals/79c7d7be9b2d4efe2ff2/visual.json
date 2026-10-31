@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "79c7d7be9b2d4efe2ff2",
+  "position": {
+    "x": 77.272727272727266,
+    "y": 278.18181818181819,
+    "z": 4000,
+    "height": 249.99999999999997,
+    "width": 440.90909090909088,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "O Portal de Informações Estratégicas do IFBA foi desenvolvido para transformar dados em conhecimento analítico, integrando informações de diversos setores estratégicos em um único lugar.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Light",
+                      "fontSize": "14pt",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Nosso objetivo é promover a transparência, facilitar o acompanhamento de indicadores e apoiar a tomada de decisão com painéis dinâmicos e acessíveis a toda comunidade",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Light",
+                      "fontSize": "14pt",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

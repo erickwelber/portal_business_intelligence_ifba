@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "a39462818b5c58a2c429",
+  "position": {
+    "x": 919.090909090909,
+    "y": 302.72727272727269,
+    "z": 42500,
+    "height": 130.90909090909091,
+    "width": 322.72727272727269,
+    "tabOrder": 48000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Painel de gestão e monitoramento que reúne informações de metas institucionais e orçamento, oferecendo tanto uma visão consolidada quanto consultas detalhadas em tabelas.",
+                    "textStyle": {
+                      "fontFamily": "Arial, Helvetica, sans-serif",
+                      "color": "#172938"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

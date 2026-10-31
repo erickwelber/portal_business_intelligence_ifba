@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Informações Estratégicas - IFBA</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Rawline / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            ifba: {
+              primary: '#006633',     // Verde Institucional IFBA
+              dark: '#004d26',        // Verde escuro topo
+              light: '#008542',       // Verde intermediário
+              red: '#cc0000',         // Ponto vermelho clássico IF
+              canvas: '#f4f6f8',      // Fundo cinza suave dos relatórios
+              cardBg: '#ffffff',
+              cardBorder: '#e2e8f0',
+              textMain: '#1a202c',
+              textMuted: '#4a5568'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilização suave para scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #edf2f7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-ifba-canvas text-ifba-textMain min-h-screen flex flex-col font-sans antialiased selection:bg-ifba-primary selection:text-white">
+
+  <!-- ================= BARRA INSTITUCIONAL SUPERIOR GOV / IFBA ================= -->
+  <header class="w-full bg-gradient-to-r from-ifba-dark via-ifba-primary to-[#007a3d] text-white shadow-md">
+    <!-- Faixa de Acessibilidade Padrão Gov.br -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex flex-wrap justify-between items-center text-xs border-b border-white/10 text-emerald-100">
+      <div class="flex items-center gap-4">
+        <span>Ir para o conteúdo <span class="bg-white/20 px-1 rounded text-[10px]">1</span></span>
+        <span class="hidden sm:inline">Ir para o menu <span class="bg-white/20 px-1 rounded text-[10px]">2</span></span>
+        <span class="hidden md:inline">Ir para a busca <span class="bg-white/20 px-1 rounded text-[10px]">3</span></span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://portal.ifba.edu.br" target="_blank" class="hover:underline flex items-center gap-1">
+          <span>Portal IFBA</span>
+          <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+        <span class="hidden sm:inline">|</span>
+        <span class="hidden sm:inline">MINISTÉRIO DA EDUCAÇÃO</span>
+      </div>
+    </div>
+
+    <!-- Topo Principal com Logo e Título do Portal -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4 text-center sm:text-left">
+        <!-- Marca em Vetor do IFBA -->
+        <div class="bg-white p-2.5 rounded-xl shadow-sm flex items-center justify-center shrink-0">
+          <svg width="42" height="48" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Círculo vermelho topo esquerda (ponto da letra I) -->
+            <circle cx="21" cy="21" r="19" fill="#CC0000"/>
+            <!-- Matriz de retângulos arredondados verdes característicos do IF -->
+            <rect x="42" y="2" width="26" height="38" rx="8" fill="#006633"/>
+            <rect x="71" y="2" width="26" height="38" rx="8" fill="#006633"/>
+            
+            <rect x="2" y="44" width="38" height="32" rx="8" fill="#006633"/>
+            <rect x="42" y="44" width="55" height="32" rx="8" fill="#006633"/>
+
+            <rect x="2" y="79" width="38" height="32" rx="8" fill="#006633"/>
+            <rect x="42" y="79" width="26" height="32" rx="8" fill="#006633"/>
+            <rect x="71" y="79" width="26" height="32" rx="8" fill="#006633"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-emerald-200 font-semibold">Instituto Federal da Bahia</div>
+          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
+            Portal de Informações Estratégicas
+          </h1>
+          <p class="text-xs sm:text-sm text-emerald-100/90 mt-0.5">
+            Catálogo Unificado de Painéis Gerenciais, Business Intelligence & Indicadores
+          </p>
+        </div>
+      </div>
+
+      <!-- Botão para Modal de Exportação para o Power BI -->
+      <div class="flex items-center gap-2">
+        <button id="btnOpenDocs" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-lg border border-white/20 transition-all duration-200 shadow-sm backdrop-blur-sm">
+          <i data-lucide="file-code" class="w-4 h-4 text-emerald-200"></i>
+          <span>Instruções Power BI (DAX / Medidas)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= BARRA DE CONTROLE: SEGMENTAÇÕES & FILTROS (SLICERS) ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-4 sm:p-5 transition-all">
+      <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+        
+        <!-- Segmentação 1: Setor (Pró-Reitorias e Diretorias) -->
+        <div class="flex-1">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <i data-lucide="building-2" class="w-3.5 h-3.5 text-ifba-primary"></i>
+            Filtrar por Setor / Lotação:
+          </label>
+          <div class="flex flex-wrap gap-1.5" id="sectorFilterContainer">
+            <!-- Gerado via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Segmentação 2: Tipo de Painel -->
+        <div class="lg:w-72">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <i data-lucide="tag" class="w-3.5 h-3.5 text-ifba-primary"></i>
+            Tipo / Categoria:
+          </label>
+          <div class="relative">
+            <select id="typeSelect" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg focus:ring-2 focus:ring-ifba-primary focus:border-ifba-primary p-2.5 pr-8 appearance-none cursor-pointer font-medium">
+              <option value="ALL">Todos os Tipos</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Busca Textual no Título e Descrição -->
+        <div class="lg:w-80">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-ifba-primary"></i>
+            Pesquisar por Palavra-Chave:
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Ex: Professor, Obras, Orçamento..." 
+              class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg focus:ring-2 focus:ring-ifba-primary focus:border-ifba-primary p-2.5 pl-9 font-medium"
+            >
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i data-lucide="search" class="w-4 h-4"></i>
+            </div>
+            <button id="btnClearSearch" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Resumo de Filtros e Contagem Ativa -->
+      <div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center bg-emerald-50 text-ifba-primary font-bold px-2.5 py-1 rounded-full border border-emerald-200">
+            <span id="activeCount" class="font-extrabold mr-1">0</span> painéis encontrados
+          </span>
+          <span id="filterStateText" class="text-slate-500">Exibindo catálogo completo</span>
+        </div>
+        <button id="btnResetFilters" class="text-xs font-semibold text-slate-600 hover:text-ifba-primary flex items-center gap-1 transition-colors">
+          <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+          Limpar todos os filtros
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GRID PRINCIPAL DE CARDS ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-6 mb-16 flex-1">
+    <!-- Grid Responsivo de Cards -->
+    <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards serão injetados dinamicamente via JS com o mesmo layout da imagem -->
+    </div>
+
+    <!-- Estado Vazio (Nenhum resultado após filtro) -->
+    <div id="emptyState" class="hidden flex-col items-center justify-center py-16 px-4 text-center bg-white rounded-2xl border border-dashed border-slate-300">
+      <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 mb-4">
+        <i data-lucide="folder-search" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-800">Nenhum painel encontrado</h3>
+      <p class="text-sm text-slate-500 max-w-sm mt-1 mb-5">
+        Não encontramos nenhum painel com os filtros ou termos pesquisados. Tente alterar o setor, categoria ou termo de busca.
+      </p>
+      <button onclick="resetAllFilters()" class="inline-flex items-center gap-2 bg-ifba-primary hover:bg-ifba-dark text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition-all">
+        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+        Restaurar Catálogo Completo
+      </button>
+    </div>
+  </main>
+
+  <!-- ================= RODAPÉ INSTITUCIONAL ================= -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 text-center sm:text-left">
+        <div class="w-2.5 h-2.5 rounded-full bg-ifba-primary"></div>
+        <p class="font-medium text-slate-700">Instituto Federal de Educação, Ciência e Tecnologia da Bahia - IFBA</p>
+      </div>
+      <p class="text-slate-400">Desenvolvido para Gestão Estratégica & Governança de Dados</p>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL: GUIA TÉCNICO DE IMPLEMENTAÇÃO NO POWER BI ================= -->
+  <div id="docsModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Topo Modal -->
+      <div class="p-4 sm:p-5 bg-gradient-to-r from-ifba-dark to-ifba-primary text-white flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="p-2 bg-white/10 rounded-lg">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-emerald-200"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold">Guia de Implementação no Microsoft Power BI</h3>
+            <p class="text-xs text-emerald-100">Fórmulas DAX, visual HTML Content e Mapeamento de Colunas</p>
+          </div>
+        </div>
+        <button id="btnCloseDocs" class="text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Corpo com Abas Técnicas -->
+      <div class="p-6 overflow-y-auto space-y-6 text-sm text-slate-700">
+        
+        <!-- Bloco 1: Colunas Físicas -->
+        <div>
+          <h4 class="text-xs uppercase font-extrabold text-ifba-primary tracking-wider mb-2 flex items-center gap-2">
+            <i data-lucide="table" class="w-4 h-4"></i>
+            1. Mapeamento das Colunas Físicas da Base
+          </h4>
+          <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+            Certifique-se de que sua tabela importada no Power BI (ex: <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono">TabelaPaineis</code>) tenha as seguintes colunas e tipos de dados categorizados:
+          </p>
+          <div class="overflow-x-auto border border-slate-200 rounded-lg">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-slate-50 font-bold text-slate-700 border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5">Nome Físico na Base</th>
+                  <th class="p-2.5">Papel no Dashboard</th>
+                  <th class="p-2.5">Categoria de Dados (Aba Modelagem)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono">
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Nome do Painel / Titulo</td>
+                  <td class="p-2.5 font-sans">Título principal em destaque no Card</td>
+                  <td class="p-2.5 font-sans">Não categorizado</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Descricao</td>
+                  <td class="p-2.5 font-sans">Texto explicativo da utilidade do painel</td>
+                  <td class="p-2.5 font-sans">Não categorizado</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Link</td>
+                  <td class="p-2.5 font-sans">URL de destino no botão "Acessar Painel"</td>
+                  <td class="p-2.5 font-sans text-emerald-700 font-bold">URL da Web (Web URL)</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Imagem</td>
+                  <td class="p-2.5 font-sans">Foto/capa superior do painel</td>
+                  <td class="p-2.5 font-sans text-emerald-700 font-bold">URL da Imagem (Image URL)</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Setor</td>
+                  <td class="p-2.5 font-sans">Filtro / Segmentador de dados 1 (ex: PROEN, DGP, PRODIN)</td>
+                  <td class="p-2.5 font-sans">Não categorizado</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Tipo</td>
+                  <td class="p-2.5 font-sans">Filtro / Segmentador de dados 2 (ex: Gestão de Pessoas, Ensino)</td>
+                  <td class="p-2.5 font-sans">Não categorizado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Bloco 2: DAX para HTML Content (Exata fidelidade visual ao modelo anexado) -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-xs uppercase font-extrabold text-ifba-primary tracking-wider flex items-center gap-2">
+              <i data-lucide="code-2" class="w-4 h-4"></i>
+              2. Medida DAX Pronta para o Visual "HTML Content"
+            </h4>
+            <button onclick="copyDaxCode()" class="text-xs text-ifba-primary hover:text-ifba-dark font-semibold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copyBtnText">Copiar Código DAX</span>
+            </button>
+          </div>
+          <p class="text-xs text-slate-600 mb-2">
+            Instale o visual gratuito <strong class="text-slate-800">HTML Content</strong> pelo AppSource do Power BI. Em seguida, crie a seguinte Nova Medida e jogue-a no campo de valor:
+          </p>
+          <pre id="daxCodeBlock" class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800">Card_HTML_IFBA = 
+VAR _Titulo = SELECTEDVALUE('TabelaPaineis'[Titulo], "Painel Institucional")
+VAR _Descricao = SELECTEDVALUE('TabelaPaineis'[Descricao], "Consulte os dados no painel interativo.")
+VAR _Link = SELECTEDVALUE('TabelaPaineis'[Link], "#")
+VAR _Imagem = SELECTEDVALUE('TabelaPaineis'[Imagem], "https://placehold.co/600x260/004d26/ffffff?text=IFBA+Painel")
+VAR _Setor = SELECTEDVALUE('TabelaPaineis'[Setor], "IFBA")
+VAR _Tipo = SELECTEDVALUE('TabelaPaineis'[Tipo], "Geral")
+
+RETURN
+"&lt;div style='
+    font-family: ""Segoe UI"", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-width: 360px;
+    margin: 10px;
+    transition: transform 0.2s ease;
+'&gt;
+    &lt;!-- Banner Superior do Card --&gt;
+    &lt;div style='
+        width: 100%;
+        height: 150px;
+        background-color: #004d26;
+        background-image: url(""" &amp; _Imagem &amp; """);
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    '&gt;&lt;/div&gt;
+
+    &lt;!-- Corpo do Card com Tipografia Idêntica ao Padrão --&gt;
+    &lt;div style='padding: 18px 20px 20px 20px; display: flex; flex-direction: column; flex-grow: 1;'&gt;
+        &lt;div style='display: flex; gap: 6px; margin-bottom: 8px;'&gt;
+            &lt;span style='background: #e6f4ea; color: #006633; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;'&gt;" &amp; _Setor &amp; "&lt;/span&gt;
+            &lt;span style='background: #f1f5f9; color: #475569; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px;'&gt;" &amp; _Tipo &amp; "&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;h3 style='
+            margin: 0 0 8px 0;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.3;
+        '&gt;" &amp; _Titulo &amp; "&lt;/h3&gt;
+
+        &lt;p style='
+            margin: 0 0 16px 0;
+            font-size: 12.5px;
+            color: #4a5568;
+            line-height: 1.45;
+            min-height: 60px;
+            flex-grow: 1;
+        '&gt;" &amp; _Descricao &amp; "&lt;/p&gt;
+
+        &lt;!-- Botão Estilizado Idêntico à Imagem Anexada --&gt;
+        &lt;a href='""" &amp; _Link &amp; """' target='_blank' style='
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #e2e8f0;
+            color: #2d3748;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13.5px;
+            cursor: pointer;
+            border: 1px solid #cbd5e1;
+        '&gt;
+            Acessar Painel
+            &lt;svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#2d3748' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'&gt;
+                &lt;line x1='5' y1='12' x2='19' y2='12'&gt;&lt;/line&gt;
+                &lt;polyline points='12 5 19 12 12 19'&gt;&lt;/polyline&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;"</pre>
+        </div>
+
+        <!-- Bloco 3: Configuração Nativa Alternativa (Card New) -->
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <h4 class="text-xs uppercase font-extrabold text-slate-800 tracking-wider mb-1 flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+            Alternativa 100% Nativa: Visual "Cartão (novo)" / New Card
+          </h4>
+          <ol class="list-decimal list-inside text-xs text-slate-600 space-y-1.5 mt-2">
+            <li>Insira o visual <strong>Cartão (novo)</strong> no relatório e adicione o campo <code class="font-bold">Titulo</code>.</li>
+            <li>Na formatação do visual, vá em <strong>Cartões > Imagem</strong>, marque <em>URL da Imagem</em> e selecione a coluna <code class="font-bold">Imagem</code> com posição <strong>Superior (Top)</strong>.</li>
+            <li>Em <strong>Rótulos de Referência (Reference Labels)</strong>, adicione a coluna <code class="font-bold">Descricao</code> posicionada abaixo do valor principal.</li>
+            <li>Ative a opção <strong>Sombra</strong> e defina o <strong>Raio do canto</strong> como <code class="font-bold">14px</code>.</li>
+            <li>Adicione um botão nativo do Power BI com o texto <em>"Acessar Painel"</em> e configure a Ação como <strong>URL da Web</strong> dinâmica baseada no campo <code class="font-bold">Link</code>.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- Rodapé Modal -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <button onclick="closeDocsModal()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition-colors">
+          Fechar Guia
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT: DADOS FÍSICOS & FILTRAGEM REATIVA ================= -->
+  <script>
+    // Base de dados física modelada conforme os dados de portais e painéis estratégicos do IFBA
+    // Campos físicos: Titulo, Descricao, Link, Imagem, Setor, Tipo
+    const paineisData = [
+      {
+        id: 1,
+        Titulo: "Banco de Professor Equivalente do IFBA (BPEq)",
+        Descricao: "Contém os dados mensais sobre a ocupação do Banco de Professor Equivalente do IFBA, contendo as principais informações sobre a força de trabalho docente em cada campus da instituição.",
+        Link: "https://bpeq.ifba.edu.br/",
+        Imagem: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=700&q=80",
+        Setor: "DGP",
+        SetorNome: "Diretoria de Gestão de Pessoas",
+        Tipo: "Gestão de Pessoas"
+      },
+      {
+        id: 2,
+        Titulo: "Painel de Obras e Infraestrutura Institucional",
+        Descricao: "Apresenta informações sobre o andamento físico e financeiro das obras em execução no IFBA, fiscalizadas pela Diretoria de Infraestrutura da Pró-Reitoria de Desenvolvimento Institucional.",
+        Link: "https://portal.ifba.edu.br/prodin/a-prodin/obras",
+        Imagem: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=700&q=80",
+        Setor: "PRODIN",
+        SetorNome: "Pró-Reitoria de Desenvolvimento Institucional",
+        Tipo: "Infraestrutura"
+      },
+      {
+        id: 3,
+        Titulo: "Painel da Execução Orçamentária e Financeira",
+        Descricao: "Demonstrativos interativos de receitas arrecadadas, despesas liquidadas, restos a pagar e dotação orçamentária por campus e ação programática do IFBA.",
+        Link: "https://portal.ifba.edu.br/proap/transparencia/painel-bi",
+        Imagem: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80",
+        Setor: "PROAP",
+        SetorNome: "Pró-Reitoria de Administração e Planejamento",
+        Tipo: "Orçamento"
+      },
+      {
+        id: 4,
+        Titulo: "Painel de Matrículas e Indicadores Acadêmicos",
+        Descricao: "Acompanhamento detalhado do censo da educação superior e técnica, taxas de evasão, retenção, conclusão e quantitativo de matrículas ativas em cursos técnicos e superiores.",
+        Link: "https://portal.ifba.edu.br/proen",
+        Imagem: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=80",
+        Setor: "PROEN",
+        SetorNome: "Pró-Reitoria de Ensino",
+        Tipo: "Acadêmico"
+      },
+      {
+        id: 5,
+        Titulo: "Painel de Indicadores de Pesquisa e Inovação",
+        Descricao: "Indicadores de projetos de pesquisa aplicada, bolsas de iniciação científica (PIBIC/PIBITI), grupos certificados pelo CNPq e patentes depositadas por pesquisadores do IFBA.",
+        Link: "https://portal.ifba.edu.br/prpgi",
+        Imagem: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=700&q=80",
+        Setor: "PRPGI",
+        SetorNome: "Pró-Reitoria de Pesquisa e Pós-Graduação",
+        Tipo: "Pesquisa & Inovação"
+      },
+      {
+        id: 6,
+        Titulo: "Painel de Ações de Extensão e Relações Comunitárias",
+        Descricao: "Monitoramento de programas, projetos, cursos e eventos de extensão executados em toda a Bahia, público beneficiado e parcerias com arranjos produtivos locais.",
+        Link: "https://portal.ifba.edu.br/proex",
+        Imagem: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=700&q=80",
+        Setor: "PROEX",
+        SetorNome: "Pró-Reitoria de Extensão",
+        Tipo: "Extensão"
+      },
+      {
+        id: 7,
+        Titulo: "Painel do Plano de Desenvolvimento Institucional (PDI)",
+        Descricao: "Acompanhamento das metas institucionais, objetivos estratégicos e indicadores de governança pactuados no PDI para o ciclo plurianual do IFBA.",
+        Link: "https://portal.ifba.edu.br/prodin/a-prodin/pdi-2025-2029",
+        Imagem: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80",
+        Setor: "PRODIN",
+        SetorNome: "Pró-Reitoria de Desenvolvimento Institucional",
+        Tipo: "Estratégico"
+      },
+      {
+        id: 8,
+        Titulo: "Painel de Auditoria e Transparência Pública",
+        Descricao: "Relatórios de monitoramento das recomendações de auditoria interna, controladoria geral da união e atendimento à Lei de Acesso à Informação (e-SIC).",
+        Link: "https://portal.ifba.edu.br",
+        Imagem: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=700&q=80",
+        Setor: "REITORIA",
+        SetorNome: "Gabinete da Reitoria / Auditoria",
+        Tipo: "Governança"
+      }
+    ];
+
+    // Estados dos Filtros
+    let currentSector = "ALL";
+    let currentType = "ALL";
+    let searchTerm = "";
+
+    // Elementos DOM
+    const cardsGrid = document.getElementById('cardsGrid');
+    const emptyState = document.getElementById('emptyState');
+    const sectorFilterContainer = document.getElementById('sectorFilterContainer');
+    const typeSelect = document.getElementById('typeSelect');
+    const searchInput = document.getElementById('searchInput');
+    const btnClearSearch = document.getElementById('btnClearSearch');
+    const activeCount = document.getElementById('activeCount');
+    const filterStateText = document.getElementById('filterStateText');
+    const btnResetFilters = document.getElementById('btnResetFilters');
+
+    // Inicialização
+    function initDashboard() {
+      buildSectorButtons();
+      buildTypeDropdown();
+      renderCards();
+      setupEventListeners();
+      lucide.createIcons();
+    }
+
+    // Gerar Botões de Segmentação por Setor
+    function buildSectorButtons() {
+      const sectors = ["ALL", ...new Set(paineisData.map(p => p.Setor))];
+      
+      sectorFilterContainer.innerHTML = sectors.map(sec => {
+        const isAll = sec === "ALL";
+        const label = isAll ? "Todos os Setores" : sec;
+        return `
+          <button 
+            type="button"
+            data-sector="${sec}"
+            onclick="selectSector('${sec}')"
+            class="sector-btn text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all duration-150 ${
+              sec === currentSector 
+                ? 'bg-ifba-primary text-white border-ifba-primary shadow-sm' 
+                : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+            }"
+          >
+            ${label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Gerar Opções do Dropdown de Tipos
+    function buildTypeDropdown() {
+      const types = ["ALL", ...new Set(paineisData.map(p => p.Tipo))];
+      typeSelect.innerHTML = types.map(t => {
+        const label = t === "ALL" ? "Todos os Tipos de Painéis" : t;
+        return `<option value="${t}">${label}</option>`;
+      }).join('');
+    }
+
+    // Filtrar dados com base nos 3 slicers
+    function getFilteredData() {
+      return paineisData.filter(item => {
+        const matchSector = currentSector === "ALL" || item.Setor === currentSector;
+        const matchType = currentType === "ALL" || item.Tipo === currentType;
+        const term = searchTerm.toLowerCase().trim();
+        const matchSearch = term === "" || 
+          item.Titulo.toLowerCase().includes(term) || 
+          item.Descricao.toLowerCase().includes(term) ||
+          item.Setor.toLowerCase().includes(term) ||
+          item.Tipo.toLowerCase().includes(term);
+
+        return matchSector && matchType && matchSearch;
+      });
+    }
+
+    // Renderizar os Cards (Exata estética do layout do IFBA solicitado)
+    function renderCards() {
+      const filtered = getFilteredData();
+      activeCount.textContent = filtered.length;
+
+      // Atualiza texto de resumo
+      let resumo = [];
+      if (currentSector !== "ALL") resumo.push(`Setor: <b>${currentSector}</b>`);
+      if (currentType !== "ALL") resumo.push(`Tipo: <b>${currentType}</b>`);
+      if (searchTerm.trim() !== "") resumo.push(`Termo: "<b>${searchTerm}</b>"`);
+      filterStateText.innerHTML = resumo.length > 0 ? `Filtrando por ${resumo.join(' • ')}` : "Exibindo catálogo completo";
+
+      if (filtered.length === 0) {
+        cardsGrid.innerHTML = "";
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+
+      // Criação dos Cards com a estrutura idêntica à imagem fornecida
+      cardsGrid.innerHTML = filtered.map(item => `
+        <article class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+          
+          <!-- Imagem de Capa do Painel com Banner Superior -->
+          <div class="relative w-full h-44 overflow-hidden bg-slate-900">
+            <!-- Imagem com fallback -->
+            <img 
+              src="${item.Imagem}" 
+              alt="${item.Titulo}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out brightness-95 group-hover:brightness-100"
+              onerror="this.src='https://placehold.co/600x300/004d26/ffffff?text=Painel+IFBA'"
+              loading="lazy"
+            />
+            
+            <!-- Gradiente sutil escuro para contraste -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+
+            <!-- Tags de Identificação Sobrepostas -->
+            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+              <span class="bg-ifba-primary/95 backdrop-blur-md text-white font-bold text-[11px] px-2.5 py-0.5 rounded-md shadow-sm border border-emerald-400/30">
+                ${item.Setor}
+              </span>
+              <span class="bg-black/60 backdrop-blur-md text-slate-100 font-medium text-[11px] px-2.5 py-0.5 rounded-md border border-white/20">
+                ${item.Tipo}
+              </span>
+            </div>
+
+            <!-- Identificador Visual IFBA Mini no canto superior direito -->
+            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1 rounded-md shadow">
+              <span class="flex items-center gap-1 text-[10px] font-bold text-ifba-dark px-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-ifba-red"></span>
+                IFBA
+              </span>
+            </div>
+          </div>
+
+          <!-- Corpo do Card: Tipografia Fiel ao Print Anexado -->
+          <div class="p-5 flex flex-col flex-1 justify-between">
+            <div>
+              <!-- Título em negrito e destaque -->
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-snug group-hover:text-ifba-primary transition-colors line-clamp-2 mb-2">
+                ${item.Titulo}
+              </h3>
+
+              <!-- Descrição limpa e legível -->
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-6">
+                ${item.Descricao}
+              </p>
+            </div>
+
+            <!-- Botão "Acessar Painel" Idêntico à Referência (Cinza com Seta) -->
+            <div>
+              <a 
+                href="${item.Link}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-full bg-[#E2E8F0] hover:bg-slate-300 active:bg-slate-400 text-slate-800 font-bold text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 border border-slate-300/80 transition-all duration-200 shadow-sm group/btn"
+              >
+                <span>Acessar Painel</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-slate-700 transition-transform duration-200 group-hover/btn:translate-x-1"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </article>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // Ações de Filtragem
+    function selectSector(sector) {
+      currentSector = sector;
+      buildSectorButtons();
+      renderCards();
+    }
+
+    function resetAllFilters() {
+      currentSector = "ALL";
+      currentType = "ALL";
+      searchTerm = "";
+      searchInput.value = "";
+      typeSelect.value = "ALL";
+      btnClearSearch.classList.add('hidden');
+      buildSectorButtons();
+      renderCards();
+    }
+
+    // Event Listeners
+    function setupEventListeners() {
+      // Filtro de tipo
+      typeSelect.addEventListener('change', (e) => {
+        currentType = e.target.value;
+        renderCards();
+      });
+
+      // Busca por texto
+      searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        if (searchTerm.trim() !== "") {
+          btnClearSearch.classList.remove('hidden');
+        } else {
+          btnClearSearch.classList.add('hidden');
+        }
+        renderCards();
+      });
+
+      // Limpar Busca
+      btnClearSearch.addEventListener('click', () => {
+        searchInput.value = "";
+        searchTerm = "";
+        btnClearSearch.classList.add('hidden');
+        renderCards();
+      });
+
+      // Limpar todos os filtros
+      btnResetFilters.addEventListener('click', resetAllFilters);
+
+      // Controle de Modal de Documentação
+      const btnOpenDocs = document.getElementById('btnOpenDocs');
+      const btnCloseDocs = document.getElementById('btnCloseDocs');
+      const docsModal = document.getElementById('docsModal');
+
+      btnOpenDocs.addEventListener('click', () => {
+        docsModal.classList.remove('hidden');
+        docsModal.classList.add('flex');
+      });
+
+      btnCloseDocs.addEventListener('click', closeDocsModal);
+
+      docsModal.addEventListener('click', (e) => {
+        if (e.target === docsModal) {
+          closeDocsModal();
+        }
+      });
+    }
+
+    function closeDocsModal() {
+      const docsModal = document.getElementById('docsModal');
+      docsModal.classList.add('hidden');
+      docsModal.classList.remove('flex');
+    }
+
+    // Copiar DAX com fallback seguro para navegadores/iFrames
+    function copyDaxCode() {
+      const code = document.getElementById('daxCodeBlock').innerText;
+      const copyBtnText = document.getElementById('copyBtnText');
+      
+      const textArea = document.createElement("textarea");
+      textArea.value = code;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        copyBtnText.innerText = "Código DAX Copiado!";
+        setTimeout(() => {
+          copyBtnText.innerText = "Copiar Código DAX";
+        }, 3000);
+      } catch (err) {
+        console.error('Falha ao copiar:', err);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    // Inicializar ao carregar janela
+    window.onload = function() {
+      initDashboard();
+    };
+  </script>
+</body>
+</html>

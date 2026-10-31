@@ -1,0 +1,156 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "Fluent2-CY26SU09",
+      "reportVersionAtImport": {
+        "visual": "2.13.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "Fluent2-CY26SU09",
+          "path": "BaseThemes/Fluent2-CY26SU09.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "BG4761998282600217.svg",
+          "path": "BG4761998282600217.svg",
+          "type": "Image"
+        },
+        {
+          "name": "BG5922309855143776.svg",
+          "path": "BG5922309855143776.svg",
+          "type": "Image"
+        },
+        {
+          "name": "BG6541466146869075.svg",
+          "path": "BG6541466146869075.svg",
+          "type": "Image"
+        },
+        {
+          "name": "BPEQ5293818962849496.png",
+          "path": "BPEQ5293818962849496.png",
+          "type": "Image"
+        },
+        {
+          "name": "DINFRA2087878690697893.png",
+          "path": "DINFRA2087878690697893.png",
+          "type": "Image"
+        },
+        {
+          "name": "EXECUCAO_ORCAMENTARIA9797788215683715.png",
+          "path": "EXECUCAO_ORCAMENTARIA9797788215683715.png",
+          "type": "Image"
+        },
+        {
+          "name": "GESTAO_COMPRAS3966708015058622.png",
+          "path": "GESTAO_COMPRAS3966708015058622.png",
+          "type": "Image"
+        },
+        {
+          "name": "gestaoPorProcessosHome11742067643713483.png",
+          "path": "gestaoPorProcessosHome11742067643713483.png",
+          "type": "Image"
+        },
+        {
+          "name": "HEADER_AZUL016233424225141846.svg",
+          "path": "HEADER_AZUL016233424225141846.svg",
+          "type": "Image"
+        },
+        {
+          "name": "HEADER_AZUL9857450745195814.svg",
+          "path": "HEADER_AZUL9857450745195814.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Home6490342988489612.svg",
+          "path": "Home6490342988489612.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Home8110620926708012.svg",
+          "path": "Home8110620926708012.svg",
+          "type": "Image"
+        },
+        {
+          "name": "MARCA_IFBA_VERTICAL_negativaBR7602492003816591.png",
+          "path": "MARCA_IFBA_VERTICAL_negativaBR7602492003816591.png",
+          "type": "Image"
+        },
+        {
+          "name": "PDI04702803713658377.png",
+          "path": "PDI04702803713658377.png",
+          "type": "Image"
+        },
+        {
+          "name": "PMI41428155458335203.png",
+          "path": "PMI41428155458335203.png",
+          "type": "Image"
+        },
+        {
+          "name": "PNP9572123446462921.png",
+          "path": "PNP9572123446462921.png",
+          "type": "Image"
+        },
+        {
+          "name": "PROINTER4560024003127431.png",
+          "path": "PROINTER4560024003127431.png",
+          "type": "Image"
+        },
+        {
+          "name": "Site_Stats-amico4930110797231432.svg",
+          "path": "Site_Stats-amico4930110797231432.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Site_Stats-amico8923455464209251.svg",
+          "path": "Site_Stats-amico8923455464209251.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Under_construction-amico655477334194042.svg",
+          "path": "Under_construction-amico655477334194042.svg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

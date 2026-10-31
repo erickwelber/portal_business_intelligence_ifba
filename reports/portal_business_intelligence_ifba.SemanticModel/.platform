@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "portal_business_intelligence_ifba"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4d2f597d-aa9c-48f1-b29c-b7f2131217ff"
+  }
+}
