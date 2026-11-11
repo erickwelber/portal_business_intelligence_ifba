@@ -39,11 +39,11 @@
        id="linearGradient1"
        inkscape:collect="always">
       <stop
-         style="stop-color:#032f5d;stop-opacity:1;"
+         style="stop-color:#004f27;stop-opacity:1;"
          offset="0"
          id="stop1" />
       <stop
-         style="stop-color:#13dfae;stop-opacity:1;"
+         style="stop-color:#009a52;stop-opacity:1;"
          offset="1"
          id="stop2" />
     </linearGradient>
@@ -68,15 +68,22 @@
        height="720"
        x="0"
        y="0"
-       ry="15"
-       sodipodi:insensitive="true" />
-    <rect
-       style="fill:#232322;stroke-width:1.638"
-       id="rect2"
-       width="996.57996"
-       height="437.17474"
-       x="111.52417"
-       y="124.01488"
-       ry="15" />
+       ry="10" />
+    <path
+       d="M 236.61719,170 H 155 v 520 c 0,10.05633 7.34852,18.33378 16.99023,19.77734 h 75.78711 c 11.11675,0 20.06641,-8.94965 20.06641,-20.0664 V 190.06641 C 267.84375,178.94966 258.89409,170 247.77734,170 Z"
+       style="display:none;opacity:1;fill:#ffffff;stroke:#ffffff;stroke-width:1.49969"
+       id="path27" />
+    <path
+       d="M 171.99023,709.77734 C 162.34852,708.33378 155,700.05633 155,690 V 170 H 30.066406 C 18.949656,170 10,178.94966 10,190.06641 v 499.64453 c 0,11.11675 8.949656,20.0664 20.066406,20.0664 z"
+       style="display:none;opacity:1;fill:#ffffff;stroke:#ffffff;stroke-width:1.49969"
+       id="path23" />
+    <path
+       d="M 935,10 A 20,20 0 0 1 955,30 20,20 0 0 1 935,50 20,20 0 0 1 915,30.025391 V 150 c 0,11.08 -8.92,20 -20,20 H 247.77734 c 11.11675,0 20.06641,8.94966 20.06641,20.06641 v 499.64453 c 0,11.11675 -8.94966,20.0664 -20.06641,20.0664 H 171.99023 C 172.9717,709.92429 173.97633,710 175,710 h 1075 c 11.08,0 20,-8.92 20,-20 V 30 c 0,-11.08 -8.92,-20 -20,-20 z"
+       style="display:none;opacity:1;fill:#ffffff;stroke:#ffffff;stroke-width:1.74071"
+       id="path22" />
+    <path
+       d="m 915,29.974609 v 0.05078 A 20,20 0 0 0 935,50 20,20 0 0 0 955,30 20,20 0 0 0 935,10 20,20 0 0 0 915,29.974609 Z"
+       style="display:none;opacity:1;fill:#ffffff;stroke:#ffffff"
+       id="path21" />
   </g>
 </svg>
